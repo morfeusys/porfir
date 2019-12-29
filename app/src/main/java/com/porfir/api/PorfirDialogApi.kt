@@ -24,7 +24,7 @@ class PorfirDialogApi(
 
     override fun createRequest(query: String): PorfirRequest {
         return when (query) {
-            PorfirResponse.MORE_PAYLOAD -> PorfirRequest(currentPrompt)
+            PorfirResponse.NEXT_PAYLOAD -> PorfirRequest(currentPrompt)
             else -> {
                 currentPrompt = query
                 PorfirRequest(query)
