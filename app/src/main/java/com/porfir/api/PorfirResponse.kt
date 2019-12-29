@@ -14,7 +14,7 @@ class PorfirResponse(
 ): JsonResponse(json, replies = json["replies"].asJsonArray.mapTo(ArrayList<Reply>()) {
     TextReply(
         query + " " + it.asString,
-        "<audio src=\"https://api.aimybox.com/generate?speaker=levitan&#038;text=${URLEncoder.encode(query + " " + it.asString, "UTF-8")}\"/>",
+        "<audio src=\"https://station.aimylogic.com/generate?speaker=levitan&#038;text=${URLEncoder.encode(query + " " + it.asString, "UTF-8")}\"/>",
         null)
 }.also { it.add(ButtonsReply(listOf(ReplyButton(text ="Еще", payload = NEXT_PAYLOAD)))) }) {
 
