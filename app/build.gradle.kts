@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 android {
@@ -51,7 +52,9 @@ repositories {
 
 dependencies {
     implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.recyclerview:recyclerview:1.0.0")
+    implementation("androidx.cardview:cardview:1.0.0")
+
+    implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("androidx.core:core-ktx:1.1.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
@@ -64,4 +67,9 @@ dependencies {
     implementation("com.justai.aimybox:google-platform-speechkit:0.7.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.5.0")
+
+    implementation("androidx.room:room-runtime:2.2.3")
+    kapt("androidx.room:room-compiler:2.2.3")
+
+    implementation("com.ironsource.aura.oneadapter:oneadapter:1.4.0")
 }
