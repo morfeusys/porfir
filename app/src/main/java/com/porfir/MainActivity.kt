@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         promptLayout = findViewById(R.id.prompt_layout)
         recyclerView = findViewById(R.id.recycler_view)
