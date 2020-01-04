@@ -13,6 +13,7 @@ import com.justai.aimybox.speechkit.google.platform.GooglePlatformTextToSpeech
 import com.porfir.api.PorfirDialogApi
 import com.porfir.dao.PorfirDatabase
 import com.porfir.model.HistoryItem
+import com.porfir.tts.AimylogicTextToSpeech
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.consumeEach
@@ -28,13 +29,12 @@ class PorfirApplication: Application(), AimyboxProvider, CoroutineScope {
     override val coroutineContext = Dispatchers.IO
 
     private fun createAimybox(context: Context): Aimybox {
-        val textToSpeech = GooglePlatformTextToSpeech(context, Locale("ru"))
+        val textToSpeech = AimylogicTextToSpeech(context)
         val speechToText = GooglePlatformSpeechToText(context, Locale("ru"))
-
-        val dialogApi = PorfirDialogApi()
+        val dialogApi = PorfirDialogApi(context)
 
         return Aimybox(Config.create(speechToText, textToSpeech, dialogApi))
-            .also { subscribeToDialogApi(it) }
+            .also(::subscribeToDialogApi)
     }
 
     private fun createDatabase(context: Context): PorfirDatabase {
